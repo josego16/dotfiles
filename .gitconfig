@@ -1,0 +1,31 @@
+[user]
+	name = Jose Maria
+	email = josemagomez.devs@gmail.com
+	username = josego16
+	signingkey = /home/josedev/.ssh/id_ed25519.pub
+[core]
+	editor = zed
+[color]
+	ui = auto
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
+	autosquash = true
+	updateRefs = true
+[push]
+	useForceIfIncludes = true
+	autoSetupRemote = true
+[commit]
+	verbose = true
+	gpgsign = true
+[rerere]
+	enabled = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/josedev/.config/git/allowed_signers
+[init]
+	defaultBranch = main
