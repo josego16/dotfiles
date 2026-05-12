@@ -39,6 +39,7 @@ export PATH=/home/josedev/.opencode/bin:$PATH
 
 # golang-go
 # export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$HOME/go/bin"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -47,4 +48,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Alias
 alias reload="source $HOME/.zshrc"
 alias upgrade='sudo apt update && sudo apt upgrade -y'
-alias cleanup='sudo apt autoremove && sudo apt autoclean -y'
+alias cleanup='sudo apt autoremove && sudo apt autoclean --purge -y'

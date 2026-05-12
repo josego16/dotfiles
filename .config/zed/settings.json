@@ -11,19 +11,23 @@
   // ─────────────────────────────────────────────────────────────
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "context7_api_key": "ctx7sk-32483b4a-67ca-406c-b34b-71b06a2544bb",
+      },
+    },
+  },
   "agent": {
     "default_model": {
       "provider": "opencode",
-      "model": "free/minimax-m2.5-free",
+      "model": "",
       "enable_thinking": true,
     },
     "favorite_models": [],
     "model_parameters": [],
-  },
-  "agent_servers": {
-    "opencode": {
-      "type": "registry",
-    },
   },
   "language_models": {
     "opencode": {
@@ -32,8 +36,6 @@
     },
   },
   "edit_predictions": {
-    "allow_data_collection": "default",
-    "mode": "eager",
     "provider": "zed",
   },
 
@@ -41,25 +43,9 @@
   // APPEARANCE
   // ─────────────────────────────────────────────────────────────
   "theme": {
-    "mode": "system",
-    "light": "Snazzy Theme - blurred",
-    "dark": "Snazzy Theme - blurred",
-  },
-  "theme_overrides": {
-    "Snazzy Theme - blurred": {
-      "border.variant": "#282a36ee",
-      "border": "#282a36ee",
-      "title_bar.background": "#282a36ee",
-      "panel.background": "#282a36ee",
-      "syntax": {
-        "comment": {
-          "font_style": "italic",
-        },
-        "comment_doc": {
-          "font_style": "italic",
-        },
-      },
-    },
+    "mode": "dark",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night",
   },
   "icon_theme": "Material Icon Theme",
   "tab_bar": {
@@ -127,11 +113,10 @@
     "background_coloring": "indent_aware",
   },
   "colorize_brackets": true,
+  "lsp_document_colors": "border",
   "code_lens": "on",
-  "inline_code_actions": false,
-  "hover_popover_enabled": false,
   "inlay_hints": {
-    "enabled": false,
+    "enabled": true,
   },
   "extend_comment_on_newline": false,
   "drag_and_drop_selection": {
@@ -156,7 +141,7 @@
     "indent_guides": {
       "show": "never",
     },
-    "default_width": 400.0,
+    "default_width": 400,
     "dock": "right",
   },
   "outline_panel": {
@@ -195,7 +180,6 @@
   // ─────────────────────────────────────────────────────────────
   "git": {
     "git_gutter": "hide",
-    "blame": {},
     "inline_blame": {
       "padding": 5,
       "enabled": false,
@@ -216,57 +200,103 @@
   // ─────────────────────────────────────────────────────────────
   // LANGUAGE SERVERS & FORMATTERS
   // ─────────────────────────────────────────────────────────────
+
   "lsp": {
-    "eslint": {
-      "settings": {
-        "codeActionOnSave": {
-          "rules": ["import/order"],
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "configPath": null,
+          "run": "onType",
+          "disableNestedConfig": false,
+          "fixKind": "safe_fix",
+          "unusedDisableDirectives": "deny",
         },
       },
     },
-  },
-  "prettier": {
-    "allowed": true,
-  },
-  "languages": {
-    "Go": {
-      "code_actions_on_format": {
-        "source.organizeImports": true,
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.configPath": null,
+          "run": "onSave",
+        },
       },
+    },
+    "gopls": {
+      "initialization_options": {
+        "staticcheck": true,
+        "analyses": {
+          "nilness": true,
+          "unusedwrite": true,
+          "shadow": true,
+          "useany": true,
+        },
+        "codelenses": {
+          "test": true,
+          "generate": true,
+          "regenerate_cgo": true,
+          "tidy": true,
+          "upgrade_dependency": true,
+          "vendor": true,
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--output.text.path=",
+        ],
+      },
+    },
+  },
+
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [
+        {
+          "language_server": {
+            "name": "oxfmt",
+          },
+        },
+        {
+          "code_action": "source.fixAll.oxc",
+        },
+      ],
     },
     "TypeScript": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"],
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "formatter": [
+        {
+          "language_server": {
+            "name": "oxfmt",
+          },
         },
-      },
-      "code_actions_on_format": {
-        "source.organizeImports": true,
-        "source.fixAll.eslint": true,
-      },
+      ],
     },
-    "TSX": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"],
-        },
-      },
-      "code_actions_on_format": {
-        "source.organizeImports": true,
-        "source.fixAll.eslint": true,
-      },
-    },
-    "JavaScript": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"],
-        },
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true,
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint"],
+      "inlay_hints": {
+        "enabled": true,
       },
     },
   },
