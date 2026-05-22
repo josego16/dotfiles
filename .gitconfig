@@ -5,6 +5,7 @@
 	signingkey = /home/josedev/.ssh/id_ed25519.pub
 [core]
 	editor = zed
+	excludesFile = /home/josedev/.config/git/ignore
 [color]
 	ui = auto
 [pull]
@@ -29,3 +30,7 @@
 	allowedSignersFile = /home/josedev/.config/git/allowed_signers
 [init]
 	defaultBranch = main
+[branch "main"]
+	rebase = true
+[diff]
+	algorithm = histogram

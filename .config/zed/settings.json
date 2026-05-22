@@ -11,27 +11,44 @@
   // ─────────────────────────────────────────────────────────────
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
-  "context_servers": {
-    "mcp-server-context7": {
-      "enabled": true,
-      "remote": false,
-      "settings": {
-        "context7_api_key": "ctx7sk-32483b4a-67ca-406c-b34b-71b06a2544bb",
+  "agent": {},
+    "favorite_models": [
+      {
+        "provider": "opencode",
+        "model": "free/big-pickle",
+        "enable_thinking": false,
       },
-    },
-  },
-  "agent": {
-    "default_model": {
-      "provider": "opencode",
-      "model": "free/minimax-m2.5-free",
-      "enable_thinking": false,
-    },
-    "favorite_models": [],
-    "model_parameters": [],
+      {
+        "provider": "opencode",
+        "model": "free/hy3-preview-free",
+        "enable_thinking": true,
+        "effort": "high",
+      },
+      {
+        "provider": "opencode",
+        "model": "free/ling-2.6-flash-free",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "opencode",
+        "model": "free/minimax-m2.5-free",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "opencode",
+        "model": "free/nemotron-3-super-free",
+        "enable_thinking": false,
+      },
+      {
+        "provider": "opencode",
+        "model": "free/deepseek-v4-flash-free",
+        "enable_thinking": false,
+      },
+    ],
   },
   "language_models": {
     "opencode": {
-      "show_zen_models": false,
+      "show_zen_models": true,
       "show_go_models": false,
     },
   },
@@ -198,112 +215,16 @@
   },
 
   // ─────────────────────────────────────────────────────────────
-  // LANGUAGE SERVERS & FORMATTERS
+  // LANGUAGE, LANGUAGE SERVERS & FORMATTERS
   // ─────────────────────────────────────────────────────────────
+  "lsp": {},
 
-  "lsp": {
-    "oxlint": {
-      "initialization_options": {
-        "settings": {
-          "configPath": null,
-          "run": "onType",
-          "disableNestedConfig": false,
-          "fixKind": "safe_fix",
-          "unusedDisableDirectives": "deny",
-        },
-      },
-    },
-    "oxfmt": {
-      "initialization_options": {
-        "settings": {
-          "fmt.configPath": null,
-          "run": "onSave",
-        },
-      },
-    },
-    "gopls": {
-      "initialization_options": {
-        "staticcheck": true,
-        "analyses": {
-          "nilness": true,
-          "unusedwrite": true,
-          "shadow": true,
-          "useany": true,
-        },
-        "codelenses": {
-          "test": true,
-          "generate": true,
-          "regenerate_cgo": true,
-          "tidy": true,
-          "upgrade_dependency": true,
-          "vendor": true,
-        },
-        "hints": {
-          "assignVariableTypes": true,
-          "compositeLiteralFields": true,
-          "compositeLiteralTypes": true,
-          "constantValues": true,
-          "functionTypeParameters": true,
-          "parameterNames": true,
-          "rangeVariableTypes": true,
-        },
-      },
-    },
-    "golangci-lint": {
-      "initialization_options": {
-        "command": [
-          "golangci-lint",
-          "run",
-          "--output.json.path",
-          "stdout",
-          "--show-stats=false",
-          "--output.text.path=",
-        ],
-      },
-    },
-  },
-
-  "languages": {
-    "JavaScript": {
-      "format_on_save": "on",
-      "prettier": {
-        "allowed": false,
-      },
-      "formatter": [
-        {
-          "language_server": {
-            "name": "oxfmt",
-          },
-        },
-        {
-          "code_action": "source.fixAll.oxc",
-        },
-      ],
-    },
-    "TypeScript": {
-      "format_on_save": "on",
-      "prettier": {
-        "allowed": false,
-      },
-      "formatter": [
-        {
-          "language_server": {
-            "name": "oxfmt",
-          },
-        },
-      ],
-    },
-    "Go": {
-      "language_servers": ["gopls", "golangci-lint"],
-      "inlay_hints": {
-        "enabled": true,
-      },
-    },
-  },
+  "languages": {},
 
   "auto_install_extensions": {
     "astro": true,
     "autocorrect": true,
+    "biome": true,
     "codebook": true,
     "comment": true,
     "csv": true,
@@ -317,23 +238,18 @@
     "javascript-snippets": true,
     "live-server": true,
     "live-template": true,
-    "material-icon-theme": true,
     "mcp-server-context7": true,
-    "mdx": true,
     "oxc": true,
-    "php": true,
-    "prisma": true,
-    "proto": true,
     "rainbow-csv": true,
     "sql": true,
     "sqlc-snippets": true,
-    "tokyo-night": true,
     "typescript-snippets": true,
     "xml": true,
   },
   "auto_update_extensions": {
     "astro": true,
     "autocorrect": true,
+    "biome": true,
     "codebook": true,
     "comment": true,
     "csv": true,
@@ -347,17 +263,11 @@
     "javascript-snippets": true,
     "live-server": true,
     "live-template": true,
-    "material-icon-theme": true,
     "mcp-server-context7": true,
-    "mdx": true,
     "oxc": true,
-    "php": true,
-    "prisma": true,
-    "proto": true,
     "rainbow-csv": true,
     "sql": true,
     "sqlc-snippets": true,
-    "tokyo-night": true,
     "typescript-snippets": true,
     "xml": true,
   },
