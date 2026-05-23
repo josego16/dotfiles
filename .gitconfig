@@ -31,8 +31,6 @@
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	allowedSignersFile = $HOME.config/git/allowed_signers
-[branch "main"]
-	rebase = true
+	allowedSignersFile = $HOME/.config/git/allowed_signers
 [diff]
 	algorithm = histogram
