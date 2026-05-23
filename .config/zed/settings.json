@@ -11,7 +11,8 @@
   // ─────────────────────────────────────────────────────────────
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
-  "agent": {},
+  "theme": "Tokyo Night",
+  "agent": {
     "favorite_models": [
       {
         "provider": "opencode",
@@ -46,25 +47,11 @@
       },
     ],
   },
-  "language_models": {
-    "opencode": {
-      "show_zen_models": true,
-      "show_go_models": false,
-    },
-  },
-  "edit_predictions": {
-    "provider": "zed",
-  },
 
   // ─────────────────────────────────────────────────────────────
   // APPEARANCE
   // ─────────────────────────────────────────────────────────────
-  "theme": {
-    "mode": "dark",
-    "light": "Tokyo Night Light",
-    "dark": "Tokyo Night",
-  },
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": "Soft Charmed Icons",
   "tab_bar": {
     "show_nav_history_buttons": false,
     "show_tab_bar_buttons": false,
@@ -228,8 +215,6 @@
     "codebook": true,
     "comment": true,
     "csv": true,
-    "docker-compose": true,
-    "dockerfile": true,
     "emmet": true,
     "git-firefly": true,
     "golangci-lint": true,
@@ -253,8 +238,6 @@
     "codebook": true,
     "comment": true,
     "csv": true,
-    "docker-compose": true,
-    "dockerfile": true,
     "emmet": true,
     "git-firefly": true,
     "golangci-lint": true,

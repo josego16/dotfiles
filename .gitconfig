@@ -1,15 +1,22 @@
 [user]
-	name = Jose Maria
+	name = josemagomezz
 	email = josemagomez.devs@gmail.com
 	username = josego16
 	signingkey = /home/josedev/.ssh/id_ed25519.pub
-[core]
-	editor = zed
-	excludesFile = /home/josedev/.config/git/ignore
-[color]
-	ui = auto
+[init]
+    defaultBranch = main
 [pull]
 	rebase = true
+[core]
+	editor = zed
+	excludesFile = $HOME/.gitignore_global
+[commit]
+	verbose = true
+	gpgsign = true
+[url "ssh://git@github.com"]
+    insteadOf = https://github.com
+[color]
+	ui = auto
 [fetch]
 	prune = true
 [rebase]
@@ -19,17 +26,12 @@
 [push]
 	useForceIfIncludes = true
 	autoSetupRemote = true
-[commit]
-	verbose = true
-	gpgsign = true
 [rerere]
 	enabled = true
 [gpg]
 	format = ssh
 [gpg "ssh"]
-	allowedSignersFile = /home/josedev/.config/git/allowed_signers
-[init]
-	defaultBranch = main
+	allowedSignersFile = $HOME.config/git/allowed_signers
 [branch "main"]
 	rebase = true
 [diff]
