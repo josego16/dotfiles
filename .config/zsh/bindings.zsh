@@ -20,6 +20,3 @@ bindkey '^\' autosuggest-toggle
 # Up/Down -> history search by substring
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-
-# Ctrl+G -> navi (cheatsheets interactivos)
-bindkey '^G' navi-widget

@@ -11,46 +11,46 @@
   // ─────────────────────────────────────────────────────────────
   // AGENT & AI
   // ─────────────────────────────────────────────────────────────
-  "theme": "Tokyo Night",
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
   "agent": {
     "favorite_models": [
       {
         "provider": "opencode",
         "model": "free/big-pickle",
-        "enable_thinking": false,
-      },
-      {
-        "provider": "opencode",
-        "model": "free/hy3-preview-free",
         "enable_thinking": true,
-        "effort": "high",
-      },
-      {
-        "provider": "opencode",
-        "model": "free/ling-2.6-flash-free",
-        "enable_thinking": false,
       },
       {
         "provider": "opencode",
         "model": "free/minimax-m2.5-free",
-        "enable_thinking": false,
+        "enable_thinking": true,
       },
       {
         "provider": "opencode",
         "model": "free/nemotron-3-super-free",
-        "enable_thinking": false,
+        "enable_thinking": true,
       },
       {
         "provider": "opencode",
-        "model": "free/deepseek-v4-flash-free",
-        "enable_thinking": false,
+        "model": "free/ring-2.6-1t-free",
+        "enable_thinking": true,
+        "effort": "high",
       },
     ],
+    "default_model": {
+      "provider": "opencode",
+      "model": "go/kimi-k2.5",
+      "enable_thinking": true,
+    },
   },
 
   // ─────────────────────────────────────────────────────────────
   // APPEARANCE
   // ─────────────────────────────────────────────────────────────
+  "theme": "Kanagawa Dragon",
   "icon_theme": "Soft Charmed Icons",
   "tab_bar": {
     "show_nav_history_buttons": false,
@@ -189,6 +189,14 @@
       "enabled": false,
     },
   },
+  "file_types": {
+    "Git Attributes": ["**/{git,.git,.git/info}/attributes"],
+    "Git Config": [
+      "*.gitconfig",
+      "**/{git,.git,.git/modules,.git/modules/*}/config",
+    ],
+    "Git Ignore": ["**/{git,.git}/ignore", "**/.git/info/exclude"],
+  },
 
   // ─────────────────────────────────────────────────────────────
   // TERMINAL
@@ -204,55 +212,261 @@
   // ─────────────────────────────────────────────────────────────
   // LANGUAGE, LANGUAGE SERVERS & FORMATTERS
   // ─────────────────────────────────────────────────────────────
-  "lsp": {},
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "astro": "html",
+        },
+        "experimental": {
+          "classRegex": [
+            "\\.className\\s*[+]?=\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttributeNS\\(.*,\\s*['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttribute\\(['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.classList\\.add\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.remove\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.toggle\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.contains\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.replace\\(\\s*['\"]([^'\"]*)['\"]",
+            "\\.classList\\.replace\\([^,)]+,\\s*['\"]([^'\"]*)['\"]",
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class:list=\"{([^}]*)}\"",
+            "class:list='{([^}]*)}'",
+          ],
+        },
+      },
+    },
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "configPath": null,
+          "run": "onType",
+          "disableNestedConfig": false,
+          "fixKind": "safe_fix",
+          "unusedDisableDirectives": "deny",
+        },
+      },
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.configPath": null,
+          "run": "onSave",
+        },
+      },
+    },
+    "biome": {
+      "settings": {
+        "require_config_file": true,
+      },
+    },
+    "gopls": {
+      "initialization_options": {
+        "staticcheck": true,
+        "analyses": {
+          "nilness": true,
+          "unusedwrite": true,
+          "shadow": true,
+          "useany": true,
+        },
+        "codelenses": {
+          "test": true,
+          "generate": true,
+          "regenerate_cgo": true,
+          "tidy": true,
+          "upgrade_dependency": true,
+          "vendor": true,
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--output.text.path=",
+        ],
+      },
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "rust": {
+          "analyzerTargetDir": true,
+        },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true,
+          },
+          "closureReturnTypeHints": {
+            "enable": "always",
+          },
+        },
+      },
+    },
 
-  "languages": {},
+  },
+
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+        { "code_action": "source.fixAll.oxc" },
+      ],
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+      ],
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+      ],
+    },
+    "HTML": {
+      "format_on_save": "on",
+      "language_servers": [
+        "vscode-html-language-server",
+        "emmet-language-server",
+        "biome",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": {
+        "language_server": { "name": "biome" },
+      },
+    },
+    "CSS": {
+      "format_on_save": "on",
+      "language_servers": [
+        "tailwindcss-intellisense-css",
+        "emmet-language-server",
+        "biome",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": {
+        "language_server": { "name": "biome" },
+      },
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "language_servers": ["biome", "autocorrect", "codebook"],
+      "formatter": {
+        "language_server": { "name": "biome" },
+      },
+    },
+    "SQL": {
+      "language_servers": ["autocorrect", "codebook"],
+    },
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint", "autocorrect", "codebook"],
+      "inlay_hints": {
+        "enabled": true,
+      },
+    },
+    "Rust": {
+      "language_servers": ["rust-analyzer", "autocorrect", "codebook"],
+    },
+  },
 
   "auto_install_extensions": {
-    "astro": true,
-    "autocorrect": true,
-    "biome": true,
-    "codebook": true,
-    "comment": true,
-    "csv": true,
-    "emmet": true,
-    "git-firefly": true,
-    "golangci-lint": true,
+    "kanagawa-themes": true,
+    "charmed-icons": true,
     "html": true,
-    "html-snippets": true,
-    "javascript-snippets": true,
+    "xml": true,
+    "astro": true,
+    "git-firefly": true,
+    "sql": true,
+    "biome": true,
+    "oxc": true,
+    "golangci-lint": true,
     "live-server": true,
     "live-template": true,
-    "mcp-server-context7": true,
-    "oxc": true,
-    "rainbow-csv": true,
-    "sql": true,
-    "sqlc-snippets": true,
+    "autocorrect": true,
+    "codebook": true,
+    "comment": true,
+    "emmet": true,
+    "html-snippets": true,
+    "javascript-snippets": true,
     "typescript-snippets": true,
-    "xml": true,
+    "sqlc-snippets": true,
   },
   "auto_update_extensions": {
-    "astro": true,
-    "autocorrect": true,
-    "biome": true,
-    "codebook": true,
-    "comment": true,
-    "csv": true,
-    "emmet": true,
-    "git-firefly": true,
-    "golangci-lint": true,
+    "kanagawa-themes": true,
+    "charmed-icons": true,
     "html": true,
-    "html-snippets": true,
-    "javascript-snippets": true,
+    "xml": true,
+    "astro": true,
+    "git-firefly": true,
+    "sql": true,
+    "biome": true,
+    "oxc": true,
+    "golangci-lint": true,
     "live-server": true,
     "live-template": true,
-    "mcp-server-context7": true,
-    "oxc": true,
-    "rainbow-csv": true,
-    "sql": true,
-    "sqlc-snippets": true,
+    "autocorrect": true,
+    "codebook": true,
+    "comment": true,
+    "emmet": true,
+    "html-snippets": true,
+    "javascript-snippets": true,
     "typescript-snippets": true,
-    "xml": true,
+    "sqlc-snippets": true,
   },
 
   // ─────────────────────────────────────────────────────────────

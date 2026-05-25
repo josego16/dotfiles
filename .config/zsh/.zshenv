@@ -9,10 +9,13 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # ---------- Editor ----------
 # Default editor used by git, crontab, etc.
-export EDITOR="zed"
-export VISUAL="zed"
+export EDITOR="nano"
+export VISUAL="nano"
 
-# ---------- Pager ----------
+# ---------- bat (pager) ----------
+export BAT_THEME="gruvbox-dark"
+export BAT_STYLE="numbers,changes"
+
 if command -v bat >/dev/null 2>&1; then
   export MANPAGER="bat -l man -p"
 elif command -v batcat >/dev/null 2>&1; then
@@ -24,4 +27,4 @@ export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 
 # ---------- PATH ----------
 # Personal binaries/scripts
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin"

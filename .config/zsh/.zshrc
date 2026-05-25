@@ -2,13 +2,15 @@
 
 # Powerful but minimal zsh configuration
 # Author: Jose Maria Gomez Liñan
+# Github: https://github.com/josego16/dotfiles
+#
 # Uses:
 #   Plugins:      fast-syntax-highlighting, zsh-autosuggestions,
 #                 zsh-history-substring-search, fzf-tab
 #   Prompt:       starship
 #   Navigation:   zoxide, fzf, fd
-#   CLI tools:    eza, bat, nano, ripgrep
-#   Node:         fnm
+#   CLI tools:    eza, bat, nano, ripgrep, lf
+#   Node:         pnpm, fnm (node manager)
 
 # =========================================================
 # History
@@ -34,17 +36,18 @@ setopt NOBEEP
 setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 
 # =========================================================
-# Smart directory navigation
+# Smart directory navigation & lf
 # =========================================================
+
+LF_ICONS=$(cat ~/.config/lf/icons | tr '\n' ':')
+export LF_ICONS
 
 # Initialize zoxide
 eval "$(zoxide init zsh)"
 
-# zsh-completions (extra completion definitions; must be in fpath before compinit)
-local zcomp_dir="${ZDOTDIR}/plugins/zsh-completions"
-if [[ -d "$zcomp_dir/src" ]]; then
-  fpath=("$zcomp_dir/src" $fpath)
-fi
+# =========================================================
+# Completion
+# =========================================================
 
 # Load completion system
 autoload -Uz compinit
@@ -53,7 +56,7 @@ autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # Enable interactive completion menu selection
-zstyle ':completion:*' menu no
+zstyle ':completion:*' menu select
 
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
@@ -63,7 +66,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matche
 # Fuzzy finder
 # =========================================================
 
-# Homebrew (fzf installed via brew, not apt)
+# Homebrew
 local fzf_base="/home/linuxbrew/.linuxbrew/opt/fzf"
 if [[ -f "$fzf_base/shell/key-bindings.zsh" ]]; then
   source "$fzf_base/shell/key-bindings.zsh"
@@ -77,26 +80,33 @@ fi
 # fzf configuration
 source "$ZDOTDIR/fzf.zsh"
 
-# Plugins and plugin manager
-source "$ZDOTDIR/plugins.zsh"
-
 # Aliases
 source "$ZDOTDIR/aliases.zsh"
 
 # Custom keybindings
 source "$ZDOTDIR/bindings.zsh"
 
+# Plugins and plugin manager
+source "$ZDOTDIR/plugins.zsh"
+
 # Prompt/theme
 source "$ZDOTDIR/prompt.zsh"
 
-# cargo
-export PATH="$HOME/.cargo/bin:$PATH"
+# =========================================================
+# Development
+# =========================================================
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
-# opencode
-export PATH="$HOME/.opencode/bin:$PATH"
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# go
+export PATH=$PATH:/usr/local/go/bin
 
 # fnm
 FNM_PATH="$HOME/.local/share/fnm"
@@ -105,17 +115,6 @@ if [ -d "$FNM_PATH" ]; then
   eval "$(fnm env --shell zsh)"
 fi
 
-#bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# bun completions
-[ -s "/home/josedev/.bun/_bun" ] && source "/home/josedev/.bun/_bun"
-
 # pnpm
 export PNPM_HOME="/home/josedev/.local/share/pnpm"
 case ":$PATH:" in
@@ -123,3 +122,15 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+#bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "/home/josedev/.bun/_bun" ] && source "/home/josedev/.bun/_bun"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export PATH=$PATH:/usr/local/go/bin

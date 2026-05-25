@@ -1,9 +1,11 @@
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # BEGIN_KITTY_THEME
-# Tokyo Night
+# Desert
 include current-theme.conf
 # END_KITTY_THEME
+
+shell_integration enabled
 
 #: Fonts {{{
 
@@ -11,10 +13,10 @@ include current-theme.conf
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-# font_family      CaskaydiaCove Nerd Font
-# bold_font        CaskaydiaCove Nerd Font, Bold
-# italic_font      CaskaydiaCove Nerd Font, Italic
-# bold_italic_font CaskaydiaCove Nerd Font, Bold Italic
+font_family      CaskaydiaCove Nerd Font
+bold_font        CaskaydiaCove Nerd Font Bold
+italic_font      CaskaydiaCove Nerd Font Italic
+bold_italic_font CaskaydiaCove Nerd Font Bold Italic
 
 #: You can specify different fonts for the bold/italic/bold-italic
 #: variants. The easiest way to select fonts is to run the `kitten
@@ -294,7 +296,7 @@ font_size 12.0
 #: so if you want to override it, place your value after the lines
 #: where the theme file is included.
 
-# cursor_shape block
+cursor_shape beam
 
 #: The cursor shape can be one of block, beam, underline. Note that
 #: when reloading the config this will be changed only if the cursor
@@ -1589,7 +1591,7 @@ tab_powerline_style round
 
 #: The foreground and background colors.
 
-background_opacity 0.85
+# background_opacity 0.90
 
 #: The opacity of the terminal background color. A number between zero
 #: and one, where one is opaque and zero is fully transparent. This

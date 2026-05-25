@@ -1,8 +1,14 @@
 # =========================================================
-# Plugins & Manager
+# Plugins
 # =========================================================
 
 ZPLUGINDIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#727169"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=30
+
+zstyle ':plugin:fast-syntax-highlighting' theme 'free'
 
 _zplugin_load() {
   local plugin_path="${ZPLUGINDIR}/${2}"
@@ -23,16 +29,7 @@ zplugin-update() {
   done
 }
 
-# ── Load order is critical ──────────────────────────────
-#   1. zsh-completions          fpath (compinit already ran)
-#   2. aloxaf/fzf-tab           hooks completions → fzf
-#   3. zsh-autosuggestions      inline suggestions
-#   4. fast-syntax-highlighting syntax highlighting
-#   5. zsh-history-substring-search  arrow-key history
-# ────────────────────────────────────────────────────────
-
-_zplugin_load zsh-users zsh-completions
 _zplugin_load aloxaf fzf-tab
 _zplugin_load zsh-users zsh-autosuggestions
-_zplugin_load zdharma-continuum fast-syntax-highlighting
 _zplugin_load zsh-users zsh-history-substring-search
+_zplugin_load zdharma-continuum fast-syntax-highlighting
