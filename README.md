@@ -2,8 +2,9 @@
   <img src="https://img.shields.io/badge/zsh-%23F15A24.svg?style=for-the-badge&logo=zsh&logoColor=white" alt="Zsh">
   <img src="https://img.shields.io/badge/starship-%23DD0B78.svg?style=for-the-badge&logo=starship&logoColor=white" alt="Starship">
   <img src="https://img.shields.io/badge/fzf-%234D4D4D.svg?style=for-the-badge&logo=gnubash&logoColor=white" alt="fzf">
-  <img src="https://img.shields.io/badge/neovim-%2357A143.svg?style=for-the-badge&logo=neovim&logoColor=white" alt="Neovim">
-  <img src="https://img.shields.io/badge/macOS-000000.svg?style=for-the-badge&logo=apple&logoColor=white" alt="macOS">
+  <img src="https://img.shields.io/badge/linux-%23FCC624.svg?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+  <img src="https://img.shields.io/badge/eza-%2300AFF0.svg?style=for-the-badge&logo=files&logoColor=white" alt="eza">
+  <img src="https://img.shields.io/badge/ripgrep-%23000000.svg?style=for-the-badge&logo=gnubash&logoColor=white" alt="ripgrep">
 </p>
 
 <br>

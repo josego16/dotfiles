@@ -14,5 +14,10 @@ local.zsh
 # Tutorial outline
 TUTORIAL.md
 
-# installed plugins
-./plugins/
+# Backup files
+*.bak
+
+# Editor swap files
+*.swp
+*.swo
+*~
