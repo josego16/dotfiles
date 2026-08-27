@@ -1,128 +1,62 @@
-# ============================================================
-# Git configuration
-# Docs: https://git-scm.com/docs/git-config
-# ============================================================
-
-# ── Identity ────────────────────────────────────────────────
 [user]
 	name = Jose Maria
 	email = josemagomez.devs@gmail.com
 	username = josego16
-	# SSH key used for commit signing (see [gpg] format = ssh below)
 	signingKey = ~/.ssh/id_ed25519.pub
 
-# ── Core ────────────────────────────────────────────────────
 [core]
-	# Editor invoked by git for commit messages, rebase TODO, etc.
-	# Policy: zed for code/commits, nano for terminal quick-edits.
 	editor = zed
-	# Global gitignore for OS and editor artifacts (generate with dotfiles).
 	excludesFile = ~/.gitignore
-	# Pager: -F (quit if <1 screen), -X (no termcap init), -R (raw colors)
 	pager = less -FXR
-	# Warn about trailing whitespace and space-before-tab in diffs.
 	whitespace = trailing-space,space-before-tab
 
-# ── Color ───────────────────────────────────────────────────
-[color]
-	# Enable colored git output everywhere (auto is default since 1.8.4).
-	ui = auto
-
-# ── Commit signing ──────────────────────────────────────────
-# Use SSH keys (not GPG) to sign commits. Requires ssh-agent with
-# the key loaded. signingKey above must point to the .pub file.
 [gpg]
 	format = ssh
 
-# ── Pull / Fetch ────────────────────────────────────────────
 [pull]
-	# Rebase local commits on top of pulled commits instead of
-	# creating a merge commit. Keeps history linear.
 	rebase = true
+
 [fetch]
-	# Prune deleted remote branches on every fetch.
 	prune = true
 
-# ── Rebase ──────────────────────────────────────────────────
 [rebase]
-	# Stash dirty working tree before rebasing, restore after.
 	autoStash = true
-	# Move fixup!/squash! commits to their target automatically
-	# when rebasing (git rebase --interactive --autosquash).
 	autosquash = true
-	# Update branch refs pointing to rebased commits so stacked
-	# branches stay connected (git rebase --update-refs).
 	updateRefs = true
 
-# ── Push ────────────────────────────────────────────────────
 [push]
-	# Require --force-with-lease to also check that local fetch
-	# includes the remote tip (safer than bare --force-with-lease).
 	useForceIfIncludes = true
-	# Automatically set up tracking on first push to a new branch.
 	autoSetupRemote = true
 
-# ── Commit ──────────────────────────────────────────────────
 [commit]
-	# Show the full diff being committed in the editor template.
 	verbose = true
-	# Sign all commits by default (key configured in [user] above).
 	gpgsign = true
 
-# ── Rerere (reuse recorded resolution) ──────────────────────
-# Remember how merge conflicts were resolved and reapply the same
-# resolution automatically if the same conflict recurs.
 [rerere]
 	enabled = true
 
-# ── Per-branch overrides ────────────────────────────────────
-[branch "main"]
-	rebase = true
-
-# ── Diff ────────────────────────────────────────────────────
-# histogram algorithm: better at detecting moves/renames than
-# the default myers algorithm, at a small performance cost.
 [diff]
 	algorithm = histogram
-	# Highlight blocks of moved lines in different colors in diffs.
 	colorMoved = zebra
 
-# ── Merge ───────────────────────────────────────────────────
 [merge]
-	# Use zdiff3 conflict style: includes the common ancestor in
-	# conflict markers for much clearer three-way conflict resolution.
 	conflictStyle = zdiff3
 
-# ── Log ─────────────────────────────────────────────────────
 [log]
-	# Show dates relative to now ("2 hours ago", "3 days ago", etc.)
 	date = relative
 
-# ── Status ──────────────────────────────────────────────────
 [status]
-	# Show untracked files in full (not just directories).
 	showUntrackedFiles = all
 
-# ── Interactive ─────────────────────────────────────────────
 [interactive]
-	# Allow single-key (y/n) navigation in add -i, rebase -i, etc.
 	singleKey = true
 
-# ── Tag ─────────────────────────────────────────────────────
 [tag]
-	# Sort tags by version number (v1.1, v1.2, …) instead of creation date.
 	sort = version:refname
 
-# ── Help ────────────────────────────────────────────────────
 [help]
-	# When a git command is mistyped, suggest and optionally auto-run
-	# the correct command. "prompt" asks before running; a number N
-	# would auto-run after N deciseconds.
 	autocorrect = prompt
 
-# ── URL rewrites ────────────────────────────────────────────
-# Automatically rewrite HTTPS GitHub URLs to SSH so clone/fetch/push
-# always use your SSH key.
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 
