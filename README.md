@@ -1,88 +1,64 @@
-# dots
+# dotfiles
 
-Personal dotfiles — a curated set of configurations for my development environment.
+Personal configuration files for Zsh, Kitty, Zed, Git, and OpenCode.
 
-## What's inside
+## Structure
 
-| Directory / File | Purpose |
-|---|---|
-| `.config/kitty/` | Kitty terminal emulator config + theme |
-| `.config/opencode/` | OpenCode AI editor configuration |
-| `.config/zed/` | Zed editor settings, keymap, tasks, themes |
-| `.config/zsh/` | Zsh shell config — plugins, aliases, bindings, prompt |
-| `.gitconfig` | Git identity, signing, rebase, and push defaults |
-
-## Quick start
-
-```sh
-# Clone into your home directory
-git clone git@github.com:josego16/dots.git ~/.dots
-
-# Symlink the configs you want (example: zsh + kitty)
-ln -sf ~/.dots/.config/kitty   ~/.config/kitty
-ln -sf ~/.dots/.config/zsh     ~/.config/zsh
-ln -sf ~/.dots/.gitconfig      ~/.gitconfig
-
-# Then complete the setup below
+```text
+.
+├── dev/
+│   ├── .config/
+│   │   ├── kitty/
+│   │   ├── zed/
+│   │   └── zsh/
+│   └── .gitconfig
+├── personal/
+│   └── .config/
+│       ├── kitty/
+│       └── zsh/
+└── scripts/
 ```
 
-The configs expect `$XDG_CONFIG_HOME` to point at `~/.config`.
+- `dev/`: development profile with Zsh, Kitty, Zed, and Git.
+- `personal/`: personal profile with Zsh and Kitty.
+- `scripts/`: standalone setup utilities.
 
 ## Setup
 
-### Zsh
+**1. Clone the repo**
 
-#### 1. Point Zsh at the right config directory
+```sh
+git clone https://github.com/josego16/dotfiles ~/.dotfiles
+ln -sfn ~/.dotfiles/dev/.config/zsh ~/.config/zsh
+```
+
+Use `personal` instead of `dev` for the personal profile.
+
+**2. Point zsh at the config directory**
 
 Add the following to `/etc/zsh/zshenv`:
 
 ```sh
-if [[ -z "$XDG_CONFIG_HOME" ]]; then
+if [[ -z "$XDG_CONFIG_HOME" ]]
+then
     export XDG_CONFIG_HOME="$HOME/.config"
 fi
 
-if [[ -d "$XDG_CONFIG_HOME/zsh" ]]; then
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+then
     export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 fi
 ```
 
-This tells Zsh to look for its config files in `~/.config/zsh/` instead of `~/.`.
-
-#### 2. Set Zsh as your default shell
+**3. Set zsh as your default shell**
 
 ```sh
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 ```
 
-Log out and back in for the change to take effect.
-
-#### 3. Create state directories
+**4. Create required directories**
 
 ```sh
-mkdir -p ~/.local/state/zsh   # shell history
+mkdir -p ~/.local/state/zsh   # history
 mkdir -p ~/.cache/zsh         # completion cache
 ```
-
-These are required — Zsh writes history and cached completions here.
-
-### Kitty
-
-Link the Kitty binary and register the desktop entry so it appears in your app launcher:
-
-```sh
-# Link the binary into PATH
-ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
-
-# Register the desktop entry
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-```
-
-## Philosophy
-
-- **Minimal** — each config file does one thing and does it well.
-- **Explicit** — no magic; every setting has a comment explaining why.
-- **Portable** — works on a fresh Linux install with minimal dependencies.
-
-## License
-
-MIT — see [LICENSE](./LICENSE).

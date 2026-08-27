@@ -18,4 +18,5 @@ Thumbs.db
 /plugins
 
 # Zsh plugins (installed locally, not tracked)
-.config/zsh/plugins
+dev/.config/zsh/plugins
+personal/.config/zsh/plugins

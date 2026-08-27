@@ -1,0 +1,392 @@
+// Zed settings
+
+{
+  // Appearance and layout
+  "theme": "Everforest Dark Hard (material)",
+  "icon_theme": "Material Icon Theme",
+  "title_bar": {
+    "show_menus": true,
+    "show_user_menu": false,
+    "show_project_items": false,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "toolbar": {
+    "code_actions": true,
+    "quick_actions": false,
+  },
+  "status_bar": {
+    "experimental.show": false,
+  },
+  "project_panel": {
+    "default_width": 400,
+    "auto_fold_dirs": false,
+    "diagnostic_badges": true,
+    "scrollbar": {
+      "show": "never",
+    },
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "outline_panel": {
+    "default_width": 300,
+    "indent_guides": {
+      "show": "never",
+    },
+  },
+  "file_finder": {
+    "modal_max_width": "large",
+  },
+  "centered_layout": {
+    "right_padding": 0.15,
+    "left_padding": 0.15,
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "gutter": {
+    "folds": false,
+    "runnables": false,
+    "min_line_number_digits": 0,
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "background_coloring": "indent_aware",
+  },
+
+  // Typography and agent interface
+  "ui_font_family": ".ZedMono",
+  "ui_font_size": 18,
+  "buffer_font_family": "Iosevka Nerd Font Mono",
+  "buffer_font_size": 18,
+  "agent_ui_font_family": ".ZedMono",
+  "agent_buffer_font_family": "Iosevka Nerd Font Mono",
+  "agent_ui_font_size": 18,
+  "agent_servers": {
+    "opencode": {
+      "type": "registry",
+    },
+  },
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false,
+    },
+  },
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "remote": false,
+      "settings": {
+        "context7_api_key": "ctx7sk-73a33a52-9a6d-4d41-aa8a-5bb0f4c8942a",
+      },
+    },
+  },
+
+  // Extension management
+  "auto_install_extensions": {
+    "astro": true,
+    "autocorrect": true,
+    "comment": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "emmet": true,
+    "git-firefly": true,
+    "golangci-lint": true,
+    "html": true,
+    "live-server": true,
+    "live-template": true,
+    "oxc": true,
+    "sql": true,
+    "toml": true,
+    "xml": true,
+  },
+  "auto_update_extensions": {
+    "astro": true,
+    "autocorrect": true,
+    "comment": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "emmet": true,
+    "git-firefly": true,
+    "golangci-lint": true,
+    "html": true,
+    "live-server": true,
+    "live-template": true,
+    "oxc": true,
+    "sql": true,
+    "toml": true,
+    "xml": true,
+  },
+
+  // Editor behavior and session
+  "seed_search_query_from_cursor": "never",
+  "current_line_highlight": "none",
+  "show_whitespaces": "none",
+  "tab_size": 2,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "extend_comment_on_newline": false,
+  "horizontal_scroll_margin": 1,
+  "vertical_scroll_margin": 1,
+  "when_closing_with_no_tabs": "keep_window_open",
+  "close_on_file_delete": true,
+  "restore_on_file_reopen": false,
+  "restore_on_startup": "launchpad",
+  "session": {
+    "restore_unsaved_buffers": false,
+  },
+  // Git integration
+  "git": {
+    "git_gutter": "hide",
+    "inline_blame": {
+      "enabled": false,
+    },
+  },
+  // Editor UI, diagnostics, and telemetry
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "show_close_button": "hover",
+    "show_diagnostics": "errors",
+  },
+  "colorize_brackets": true,
+  "code_lens": "on",
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  // Git panel and file associations
+  "git_panel": {
+    "file_icons": true,
+    "tree_view": true,
+  },
+  "file_types": {
+    "Git Attributes": ["**/{git,.git,.git/info}/attributes"],
+    "Git Config": [
+      "*.gitconfig",
+      "**/{git,.git,.git/modules,.git/modules/*}/config",
+    ],
+    "Git Ignore": ["**/{git,.git}/ignore", "**/.git/info/exclude"],
+  },
+  // Terminal
+  "terminal": {
+    "copy_on_select": true,
+    "font_family": "FiraCode Nerd Font Mono",
+    "shell": {
+      "program": "zsh",
+    },
+  },
+  // Language servers
+  "lsp": {
+    "live-server": {
+      "initialization_options": {
+        "lazy": true,
+        "public": false,
+        "start_port": 3000,
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "includeLanguages": {
+          "astro": "html",
+        },
+        "experimental": {
+          "classRegex": [
+            "\\.className\\s*[+]?=\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttributeNS\\(.*,\\s*['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.setAttribute\\(['\"]class['\"],\\s*['\"]([^'\"]*)['\"]",
+            "\\.classList\\.add\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.remove\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.toggle\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.contains\\(['\"]([^'\"]*)['\"]",
+            "\\.classList\\.replace\\([^,)]+,\\s*['\"]([^'\"]*)['\"]",
+            "class=\"([^\"]*)\"",
+            "class='([^']*)'",
+            "class:list=\"{([^}]*)}\"",
+            "class:list='{([^']*)}'",
+          ],
+        },
+      },
+    },
+    "vtsls": {
+      "binary": {
+        "path": "node_modules/.bin/tsc",
+        "arguments": ["--lsp", "--studio"],
+      },
+    },
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "configPath": null,
+          "run": "onType",
+          "disableNestedConfig": false,
+          "fixKind": "safe_fix",
+          "unusedDisableDirectives": "deny",
+        },
+      },
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.configPath": null,
+          "run": "onSave",
+        },
+      },
+    },
+    "gopls": {
+      "initialization_options": {
+        "staticcheck": true,
+        "analyses": {
+          "nilness": true,
+          "unusedwrite": true,
+          "shadow": true,
+          "useany": true,
+        },
+        "codelenses": {
+          "test": true,
+          "generate": true,
+          "regenerate_cgo": true,
+          "tidy": true,
+          "upgrade_dependency": true,
+          "vendor": true,
+        },
+        "hints": {
+          "assignVariableTypes": true,
+          "compositeLiteralFields": true,
+          "compositeLiteralTypes": true,
+          "constantValues": true,
+          "functionTypeParameters": true,
+          "parameterNames": true,
+          "rangeVariableTypes": true,
+        },
+      },
+    },
+    "golangci-lint": {
+      "initialization_options": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path",
+          "stdout",
+          "--show-stats=false",
+          "--output.text.path=",
+        ],
+      },
+    },
+  },
+  // Language-specific settings
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+        { "code_action": "source.fixAll.oxc" },
+      ],
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+      ],
+    },
+    "TSX": {
+      "format_on_save": "on",
+      "prettier": {
+        "allowed": false,
+      },
+      "language_servers": [
+        "typescript-language-server",
+        "oxlint",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": [
+        {
+          "language_server": { "name": "oxfmt" },
+        },
+      ],
+    },
+    "HTML": {
+      "format_on_save": "on",
+      "language_servers": [
+        "vscode-html-language-server",
+        "emmet-language-server",
+        "live-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "CSS": {
+      "format_on_save": "on",
+      "language_servers": [
+        "tailwindcss-intellisense-css",
+        "emmet-language-server",
+        "autocorrect",
+        "codebook",
+      ],
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "JSON": {
+      "format_on_save": "on",
+      "language_servers": ["autocorrect", "codebook"],
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+        },
+      },
+    },
+    "Go": {
+      "language_servers": ["gopls", "golangci-lint", "autocorrect", "codebook"],
+      "inlay_hints": {
+        "enabled": true,
+      },
+    },
+  },
+}
