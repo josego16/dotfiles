@@ -36,7 +36,8 @@ eval "$(zoxide init zsh)"
 # Load completion system
 autoload -Uz compinit
 
-compinit -u -d "$XDG_CACHE_HOME/zsh/zcompdump"
+mkdir -p "$XDG_CACHE_HOME/zsh"
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
 # Enable interactive completion menu selection
 zstyle ':completion:*' menu select
@@ -59,11 +60,11 @@ source "$ZDOTDIR/fzf.zsh"
 # Aliases
 source "$ZDOTDIR/aliases.zsh"
 
+# Plugins and plugin manager
+source "$ZDOTDIR/plugins.zsh"
+
 # Custom keybindings
 source "$ZDOTDIR/bindings.zsh"
-
-# Plugins
-source "$ZDOTDIR/plugins.zsh"
 
 # Prompt/theme
 source "$ZDOTDIR/prompt.zsh"

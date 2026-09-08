@@ -10,7 +10,7 @@ alias upalias='$EDITOR "$ZDOTDIR/aliases.zsh"'
 # Maintenance
 alias apu='sudo apt update && sudo apt upgrade'
 alias apuall='sudo apt update && sudo apt full-upgrade'
-alias clean='sudo apt autoremove --purge -y && sudo apt autoclean'
+alias clean='sudo apt autoremove --purge && sudo apt autoclean'
 
 # =========================================================
 # Navigation
@@ -58,8 +58,8 @@ alias catl='bat --paging=never'
 # =========================================================
 alias opg='opencode upgrade'
 alias bng='bun upgrade'
-alias gtg='gentle-ai upgrade && gentle-ai sync'
 alias pnpg='pnpm self-update'
+alias gtg='gentle-ai upgrade && gentle-ai sync'
 alias brg='brew update && brew upgrade && brew cleanup -s --prune=all'
 alias fng='curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell'
 alias ktg='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'

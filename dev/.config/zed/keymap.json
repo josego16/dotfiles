@@ -9,17 +9,9 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-shift-g": [
-        "task::Spawn",
-        { "task_name": "LazyGit", "reveal_target": "center" },
-      ],
       "ctrl-alt-a": [
         "action::Sequence",
-        [
-          "workspace::CloseAllDocks",
-          "workspace::CloseInactiveTabsAndPanes",
-          "workspace::ToggleCenteredLayout",
-        ],
+        ["workspace::CloseAllDocks", "workspace::CloseInactiveTabsAndPanes"],
       ],
     },
   },

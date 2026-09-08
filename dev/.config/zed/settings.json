@@ -49,12 +49,15 @@
   "gutter": {
     "folds": false,
     "runnables": false,
+    "bookmarks": false,
+    "breakpoints": false,
     "min_line_number_digits": 0,
   },
   "indent_guides": {
     "coloring": "indent_aware",
     "background_coloring": "indent_aware",
   },
+  "soft_wrap": "editor_width",
 
   // Typography and agent interface
   "ui_font_family": ".ZedMono",
@@ -64,6 +67,15 @@
   "agent_ui_font_family": ".ZedMono",
   "agent_buffer_font_family": "Iosevka Nerd Font Mono",
   "agent_ui_font_size": 18,
+  "agent_buffer_font_size": 18,
+  "agent": {
+    "default_model": {
+      "provider": "opencode",
+      "model": "go/deepseek-v4-flash",
+      "enable_thinking": true,
+      "effort": "high",
+    },
+  },
   "agent_servers": {
     "opencode": {
       "type": "registry",
@@ -78,9 +90,6 @@
     "mcp-server-context7": {
       "enabled": true,
       "remote": false,
-      "settings": {
-        "context7_api_key": "ctx7sk-73a33a52-9a6d-4d41-aa8a-5bb0f4c8942a",
-      },
     },
   },
 

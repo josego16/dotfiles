@@ -10,7 +10,7 @@ alias upalias='$EDITOR "$ZDOTDIR/aliases.zsh"'
 # Maintenance
 alias apu='sudo apt update && sudo apt upgrade'
 alias apuall='sudo apt update && sudo apt full-upgrade'
-alias clean='sudo apt autoremove --purge -y && sudo apt autoclean'
+alias clean='sudo apt autoremove --purge && sudo apt autoclean'
 
 # =========================================================
 # Navigation
