@@ -16,42 +16,33 @@ alias clean='sudo apt autoremove --purge && sudo apt autoclean'
 # Navigation
 # =========================================================
 # zoxide
-alias zi='zoxide query -i'
-alias za='zoxide add'
+if command -v zoxide >/dev/null 2>&1; then
+  alias zi='zoxide query -i'
+  alias za='zoxide add'
+fi
 
 # =========================================================
 # File listing
 # =========================================================
-
-# Better ls
-alias ls='eza --icons'
+# Colored ls output
+alias ls='ls --color=auto'
 
 # Detailed listing
-alias ll='eza -lh --icons --git'
+alias ll='ls -lh'
 
 # Detailed listing including hidden files
-alias la='eza -lah --icons --git'
-
-# Tree view
-alias tree='eza --tree --icons'
-
-# Tree limited to 2 levels
-alias lt='eza --tree --level=2 --icons'
+alias la='ls -lah'
 
 # Directories only
-alias ld='eza -lD --icons'
+ld() {
+  local -a directories=( *(/N) )
+  if (( ${#directories} )); then
+    command ls -ld -- $directories
+  fi
+}
 
 # Sort by size
-alias lz='eza -la --total-size --icons'
-
-# Better cat
-alias cat='bat'
-
-# Plain output (no line numbers, ideal for pipes)
-alias catp='bat --plain'
-
-# Always print, never page
-alias catl='bat --paging=never'
+alias lz='ls -laS'
 
 # =========================================================
 # Update Tools

@@ -1,7 +1,6 @@
 # =========================================================
 # Plugin manager
 # =========================================================
-
 ZPLUGINDIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 
 # Clone if missing, then source
@@ -28,7 +27,6 @@ zplugin-update() {
 # =========================================================
 # Plugins
 # =========================================================
-_zplugin_load Aloxaf fzf-tab
 _zplugin_load zsh-users zsh-autosuggestions
 _zplugin_load zsh-users zsh-history-substring-search
 _zplugin_load zdharma-continuum fast-syntax-highlighting
